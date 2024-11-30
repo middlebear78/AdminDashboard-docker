@@ -22,7 +22,7 @@ class Vacation(models.Model):
     end_date = models.DateField(blank=True, null=True)
     price = models.DecimalField(
         max_digits=10, decimal_places=2, blank=True, null=True)
-    vacation_img = vacation_img = models.ImageField(
+    vacation_img = models.ImageField(
         upload_to='vacation_images/', blank=True, null=True)
     country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
     likes = models.IntegerField(blank=True, null=True)

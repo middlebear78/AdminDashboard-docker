@@ -1,4 +1,4 @@
-#!C:\Users\USER\Desktop\Github\AdminDashboard\server\venv\Scripts\python.exe
+#!C:\Users\USER\Desktop\Github\AdminDashboard-docker\server\venv\Scripts\python.exe
 # -*- coding: utf-8 -*-
 # Copyright 2024 Google LLC
 #

@@ -15,6 +15,9 @@ import os
 import firebase_admin
 from firebase_admin import credentials
 from corsheaders.defaults import default_headers
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 cred = credentials.Certificate("./config/fbServiceAccountKey.json")
@@ -28,10 +31,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-k=gnkozjr2-9ujb7u3t+4u!rdcl=wejp_x!5-+s#o4oxfo*6gr"
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = []
 
@@ -91,14 +94,13 @@ WSGI_APPLICATION = "server.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
+     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "project",
-        "USER": "root",
-        "PASSWORD": "123456",
-        "HOST": "localhost", 
-        # "HOST": "database-service",  #for the docker
-        "PORT": "3306",
+        "NAME": os.getenv('DB_NAME'),
+        "USER": os.getenv('DB_USER'),
+        "PASSWORD": os.getenv('DB_PASSWORD'),
+        "HOST": os.getenv('DB_HOST'),
+        "PORT": os.getenv('DB_PORT'),
     }
 }
 
